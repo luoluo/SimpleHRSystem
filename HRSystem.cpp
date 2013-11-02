@@ -35,7 +35,56 @@ public:
 	}
 };
 int
+init() {
+	return 0;
+}
+int
+display() {
+	return 0;
+}
+int
+sort() {
+	return 0;
+}
+int
+search() {
+	return 0;
+}
+int
+edit() {
+	return 0;	
+}
+int
+add() {
+	return 0;
+}
+int
+remove() {
+	return 0;
+}
+int
+goback() {
+	printf("returning...\n");
+	return 0;
+}
+
+int
 studentManage() {
+	while (1) {
+		int x;
+		printf("1->display\t2->sort\t3->search\t4.edit\t5.add\t6.remove\t0->back\n");
+		scanf("%d", &x);
+		switch(x) {
+			case 1: display(); break;
+			case 2: sort(); break;
+			case 3: search(); break;
+			case 4: edit(); break;
+			case 5: add(); break;
+			case 6: remove(); break;
+			case 0: goback(); return 0;
+			default: ;
+		}
+	}
 	return 0;
 }
 int
@@ -81,6 +130,7 @@ test() {
 }
 int
 main () {
+	init();
 	operation();
 	return 0;
 }
