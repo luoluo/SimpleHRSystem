@@ -27,11 +27,11 @@ public:
 			cout << "init start\n";
 			char name[100];
 			char index[100];
-			string classId;
+			string department;
 			while (!stuin.eof() &&
-				stuin >> name >> index >> classId) {
-				cout << "|" << name << "|" << index << "|" << classId<< endl;
-				teachers[totalteacher] = new Teacher(name, index, classId);
+				stuin >> name >> index >> department) {
+				cout << "|" << name << "|" << index << "|" << department<< endl;
+				teachers[totalteacher] = new Teacher(name, index, department);
 				totalteacher++;
 			}
 			stuin.close();
@@ -90,9 +90,9 @@ public:
 	add() {
 		char name[100];
 		char index[100];
-		string classId;
-		cin >> name >> index >> classId;
-		teachers[totalteacher] = new Teacher(name, index, classId);
+		string department;
+		cin >> name >> index >> department;
+		teachers[totalteacher] = new Teacher(name, index, department);
 		totalteacher++;
 		return 0;
 	}

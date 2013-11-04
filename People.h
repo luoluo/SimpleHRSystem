@@ -16,8 +16,8 @@ public:
 	int
 	showInfo() {
 		//printf("%s\t%s\n", this -> name, this -> index);
-		cout << this -> name << "\t" << this -> index << "\t";
-		//this -> birthday.showDate();
+		cout << this -> name << "\t" << this -> index << "\t" << this -> sex << "\t" << this -> id  << "\t";
+		this -> birthday.showDate();
 		return 0;
 	}
 	static ofstream *temp;

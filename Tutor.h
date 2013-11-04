@@ -21,15 +21,6 @@ public:
 		this -> People::writePeopleInfo(stuout);
 		*stuout << classId << endl;
 	}
-	static int
-	sdisplay() {
-		int i;
-		for (i = 0; i < total; i++) {
-			students[i] -> showInfo();
-		}
-		return 0;
-	}
-
 };
 ofstream *Tutor::stuout = new ofstream("newTutorInfo.txt");
 

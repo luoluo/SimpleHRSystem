@@ -6,7 +6,7 @@ public:
 	static ofstream *stuout;
 	static Student **students;
 	string classId;
-	Student(string name="xx", string index="xx", string classId="xx", string sex="x", string id="-1", int year=-1, int month=-1, int day=-1)
+	Student(string name="xx", string index="xx", string classId="s1", string sex="M", string id="12345", int year=1990, int month=1, int day=1)
 		:People(name, index, sex, id, year, month, day) {
 		this -> classId = classId;
 	}
@@ -21,15 +21,5 @@ public:
 		this -> People::writePeopleInfo(stuout);
 		*stuout << classId << endl;
 	}
-	static int
-	sdisplay() {
-		int i;
-		for (i = 0; i < total; i++) {
-			students[i] -> showInfo();
-		}
-		return 0;
-	}
-
 };
 ofstream *Student::stuout = new ofstream("newStudentInfo.txt");
-

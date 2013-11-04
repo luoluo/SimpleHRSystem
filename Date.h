@@ -13,7 +13,7 @@ public:
 	}
 	int
 	showDate() {
-		cout << this -> year << "/" << this -> month << "/" << this -> day << endl;
+		cout << this -> year << "/" << this -> month << "/" << this -> day << "\t";
 	}
 };
 #endif
