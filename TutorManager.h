@@ -1,19 +1,19 @@
-#include "Student.h"
-#define STUDENT 1000
+#include "Tutor.h"
+#define TUTOR 1000
 class
-StudentManager {
+TutorManager {
 private:
-	static StudentManager *_instance;
-	static Student **students;
-	static int totalstudent;
-	StudentManager() {
+	static TutorManager *_instance;
+	static Tutor **tutors;
+	static int totaltutor;
+	TutorManager() {
 	}
 public:
-	static StudentManager *
+	static TutorManager *
 	getManager() {
 		if (_instance == NULL) {
-			_instance = new StudentManager();	
-			students = new Student*[STUDENT];
+			_instance = new TutorManager();	
+			tutors = new Tutor*[TUTOR];
 			init();
 		}
 		return _instance;
@@ -21,7 +21,7 @@ public:
 	static int
 	init() {
 		ifstream stuin;
-		stuin.open("studentInfo.txt"); 
+		stuin.open("tutorInfo.txt"); 
 	//		while (!stuin.eof()) {
 		if (stuin.is_open()) {
 			cout << "init start\n";
@@ -31,8 +31,8 @@ public:
 			while (!stuin.eof() &&
 				stuin >> name >> index >> classId) {
 				cout << "|" << name << "|" << index << "|" << classId<< endl;
-				students[totalstudent] = new Student(name, index, classId);
-				totalstudent++;
+				tutors[totaltutor] = new Tutor(name, index, classId);
+				totaltutor++;
 			}
 			stuin.close();
 		}
@@ -40,20 +40,20 @@ public:
 		return 0;
 	}
 	static bool
-	cmp(Student * s1, Student * s2) {
+	cmp(Tutor * s1, Tutor * s2) {
 	//	return strcmp(s1 -> classId, s2 -> classId ) > 0;
 		return s1->classId.compare(s2->classId) > 0;
 	}
 	static int
 	stusort() {
-		sort(students, students+totalstudent, cmp);
+		sort(tutors, tutors+totaltutor, cmp);
 		return 0;
 	}
 	
 	static int searchByClass(string classIdx) {
 		int i;
-		for (i = 0; i < totalstudent; i++) {
-			if (classIdx.compare(students[i]->classId) == 0) {
+		for (i = 0; i < totaltutor; i++) {
+			if (classIdx.compare(tutors[i]->classId) == 0) {
 				return i;
 			}
 		}
@@ -81,7 +81,7 @@ public:
 		} else {
 			string newclassId;
 			cin >> newclassId;
-			students[i] -> classId = newclassId;
+			tutors[i] -> classId = newclassId;
 			cout << i << endl;
 		}
 		return 0;	
@@ -92,8 +92,8 @@ public:
 		char index[100];
 		string classId;
 		cin >> name >> index >> classId;
-		students[totalstudent] = new Student(name, index, classId);
-		totalstudent++;
+		tutors[totaltutor] = new Tutor(name, index, classId);
+		totaltutor++;
 		return 0;
 	}
 	static int
@@ -105,10 +105,10 @@ public:
 			cout << "not here\n";
 		} else {
 			int j;
-			for (j = i+1; j < totalstudent; j++) {
-				students[j-1] = students[j];
+			for (j = i+1; j < totaltutor; j++) {
+				tutors[j-1] = tutors[j];
 			}
-			totalstudent--;
+			totaltutor--;
 		}
 		return 0;
 	}
@@ -120,8 +120,8 @@ public:
 	static int
 	display() {
 		int i;
-		for (i = 0; i < totalstudent; i++) {
-			students[i] -> showInfo();
+		for (i = 0; i < totaltutor; i++) {
+			tutors[i] -> showInfo();
 		}
 		return 0;
 	}
@@ -147,13 +147,13 @@ public:
 	static int 
 	writeback() {
 		int i;
-		for (i = 0; i < totalstudent; i++) {
-			students[i] -> writeStudentInfo();
+		for (i = 0; i < totaltutor; i++) {
+			tutors[i] -> writeTutorInfo();
 		}
-		Student::stuout -> close();
-		rename("newStudentInfo.txt", "studentInfo.txt");
+		Tutor::stuout -> close();
+		rename("newTutorInfo.txt", "tutorInfo.txt");
 	}
 };
-StudentManager * StudentManager::_instance = NULL;
-Student ** StudentManager::students = NULL;
-int StudentManager::totalstudent = 0;
+TutorManager * TutorManager::_instance = NULL;
+Tutor ** TutorManager::tutors = NULL;
+int TutorManager::totaltutor = 0;

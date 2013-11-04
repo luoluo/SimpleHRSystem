@@ -8,17 +8,8 @@
 #include "StudentManager.h"
 #include "TeacherManager.h"
 #include "GraduateManager.h"
+#include "TutorManager.h"
 using namespace std;
-int
-graduateManage() {
-	return 0;
-}
-int
-teachAssistManage() {
-	return 0;
-}
-
-
 class
 Manager {
 private:
@@ -26,6 +17,7 @@ private:
 	static StudentManager * studentManager;
 	static TeacherManager * teacherManager;
 	static GraduateManager * graduateManager;
+	static TutorManager * tutorManager;
 	Manager() {
 	}
 public:
@@ -36,6 +28,7 @@ public:
 			studentManager = StudentManager::getManager();
 			teacherManager = TeacherManager::getManager();
 			graduateManager = GraduateManager::getManager();
+			tutorManager = TutorManager::getManager();
 		}
 		return _instance;
 	}
@@ -49,7 +42,7 @@ public:
 				case 1:	studentManager->manage(); break;
 				case 2: teacherManager->manage(); break;
 				case 3:	graduateManager->manage(); break;
-		//		case 4: teachAssistManage(); break;
+				case 4: tutorManager->manage(); break;
 				case 0: logout(); return 0;
 				default: ;
 			}
@@ -61,6 +54,7 @@ public:
 		studentManager->writeback();
 		teacherManager->writeback();
 		graduateManager->writeback();
+		tutorManager->writeback();
 		printf("lt\n");
 		return 0;
 	}
@@ -69,6 +63,7 @@ Manager * Manager::_instance = NULL;
 StudentManager * Manager::studentManager = NULL;
 TeacherManager * Manager::teacherManager = NULL;
 GraduateManager * Manager::graduateManager = NULL;
+TutorManager * Manager::tutorManager= NULL;
 
 int
 test() {
