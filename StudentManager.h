@@ -25,13 +25,12 @@ public:
 	//		while (!stuin.eof()) {
 		if (stuin.is_open()) {
 			cout << "init start\n";
-			char name[100];
-			char index[100];
-			string classId;
+			string name, index, sex, id, classId;
+			int year, month, day; 
 			while (!stuin.eof() &&
-				stuin >> name >> index >> classId) {
+				stuin >>name>> index>> sex>> id>> year>> month>> day>> classId) {
 				cout << "|" << name << "|" << index << "|" << classId<< endl;
-				students[totalstudent] = new Student(name, index, classId);
+				students[totalstudent] = new Student(name, index, sex, id, classId, year, month, day );
 				totalstudent++;
 			}
 			stuin.close();
@@ -42,7 +41,7 @@ public:
 	static bool
 	cmp(Student * s1, Student * s2) {
 	//	return strcmp(s1 -> classId, s2 -> classId ) > 0;
-		return s1->classId.compare(s2->classId) > 0;
+		return s1->People::index.compare(s2->People::index) < 0;
 	}
 	static int
 	stusort() {
@@ -50,10 +49,10 @@ public:
 		return 0;
 	}
 	
-	static int searchByClass(string classIdx) {
+	static int searchByIndex(string indexx) {
 		int i;
 		for (i = 0; i < totalstudent; i++) {
-			if (classIdx.compare(students[i]->classId) == 0) {
+			if (indexx.compare(students[i]->People::index) == 0) {
 				return i;
 			}
 		}
@@ -61,9 +60,9 @@ public:
 	}
 	static int
 	search() {
-		string classIdx;
-		cin >> classIdx;
-		int i = searchByClass(classIdx);
+		string index;
+		cin >> index;
+		int i = searchByIndex(index);
 		if (i == -1) {
 			cout << "not here\n";
 		} else {
@@ -73,34 +72,34 @@ public:
 	}
 	static int
 	edit() {
-		string classIdx;
-		cin >> classIdx;
-		int i = searchByClass(classIdx);
+		string index;
+		cin >> index;
+		int i = searchByIndex(index);
 		if (i == -1) {
 			cout << "not here\n";
 		} else {
-			string newclassId;
-			cin >> newclassId;
-			students[i] -> classId = newclassId;
+			string newIndex;
+			students[i]  = new Student();
 			cout << i << endl;
 		}
 		return 0;	
 	}
 	static int
 	add() {
-		char name[100];
-		char index[100];
-		string classId;
-		cin >> name >> index >> classId;
-		students[totalstudent] = new Student(name, index, classId);
+//		char name[100];
+//		char index[100];
+//		string classId;
+//		cin >> name >> index >> classId;
+//		students[totalstudent] = new Student(name, index, classId);
+		students[totalstudent] = new Student();
 		totalstudent++;
 		return 0;
 	}
 	static int
 	remove() {
-		string classIdx;
-		cin >> classIdx;
-		int i = searchByClass(classIdx);
+		string indexx;
+		cin >> indexx;
+		int i = searchByIndex(indexx);
 		if (i == -1) {
 			cout << "not here\n";
 		} else {

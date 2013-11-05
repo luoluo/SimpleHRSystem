@@ -88,11 +88,7 @@ public:
 	}
 	static int
 	add() {
-		char name[100];
-		char index[100];
-		string department;
-		cin >> name >> index >> department;
-		teachers[totalteacher] = new Teacher(name, index, department);
+		teachers[totalteacher] = new Teacher();
 		totalteacher++;
 		return 0;
 	}

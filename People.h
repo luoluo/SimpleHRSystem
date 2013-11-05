@@ -13,6 +13,10 @@ public:
 		this -> sex = sex;
 		this -> id = id;
 	}
+	People():birthday() {
+		cout << "name\tindex\tsex\tid\n";
+		cin >>this-> name>>this->index>>this->sex>>this->id;
+	}
 	int
 	showInfo() {
 		//printf("%s\t%s\n", this -> name, this -> index);
@@ -25,7 +29,8 @@ public:
 	writePeopleInfo(ofstream *peoout = NULL) {
 		if (peoout) {
 //			cout << "write in people\n";
-			*peoout<< this -> name << "\t" << this -> index << "\t";
+			*peoout<< this->name << "\t" << this->index << "\t" << this->sex << "\t" << this->id << "\t";
+			this -> birthday.writeDateInfo(peoout);
 		}
 		return 0;
 	}

@@ -22,16 +22,13 @@ public:
 	init() {
 		ifstream stuin;
 		stuin.open("tutorInfo.txt"); 
-	//		while (!stuin.eof()) {
 		if (stuin.is_open()) {
 			cout << "init start\n";
-			char name[100];
-			char index[100];
-			string classId;
+			string name, index, sex;
 			while (!stuin.eof() &&
-				stuin >> name >> index >> classId) {
-				cout << "|" << name << "|" << index << "|" << classId<< endl;
-				tutors[totaltutor] = new Tutor(name, index, classId);
+				stuin >> name >> index >> sex) {
+				cout << "|" << name << "|" << index << "|" << sex<< endl;
+				tutors[totaltutor] = new Tutor(name, index, sex);
 				totaltutor++;
 			}
 			stuin.close();

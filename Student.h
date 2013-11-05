@@ -1,3 +1,5 @@
+#ifndef STUDENT_H
+#define STUDENT_H
 #include "People.h"
 class
 Student : public People {
@@ -6,7 +8,13 @@ public:
 	static ofstream *stuout;
 	static Student **students;
 	string classId;
-	Student(string name="xx", string index="xx", string classId="s1", string sex="M", string id="12345", int year=1990, int month=1, int day=1)
+	Student():People() {
+		cout << "classId\n";
+		cin >> classId;
+		this -> classId = classId;
+	}
+
+	Student(string name, string index, string sex="M", string id="12345", string classId="s1", int year=1990, int month=1, int day=1)
 		:People(name, index, sex, id, year, month, day) {
 		this -> classId = classId;
 	}
@@ -23,3 +31,4 @@ public:
 	}
 };
 ofstream *Student::stuout = new ofstream("newStudentInfo.txt");
+#endif

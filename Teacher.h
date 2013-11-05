@@ -6,7 +6,11 @@ public:
 	static ofstream *stuout;
 	static Teacher **teachers;
 	string department;
-	Teacher(string name="xx", string index="xx", string department="T1", string sex="M", string id="23456", int year=1700, int month=1, int day=1)
+	Teacher():People(){
+		cout << "department\n";
+		cin >> this -> department;
+	}
+	Teacher(string name, string index, string department="T1", string sex="M", string id="23456", int year=1700, int month=1, int day=1)
 		:People(name, index, sex, id, year, month, day) {
 		this -> department = department;
 	}

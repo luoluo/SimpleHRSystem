@@ -1,13 +1,14 @@
 #include "People.h"
 class
-Tutor : public People {
+Tutor : public Graduate{
 public:
-	static int total;
 	static ofstream *stuout;
-	static Tutor **students;
-	string classId;
-	Tutor(string name="xx", string index="xx", string classId="xx", string sex="x", string id="-1", int year=-1, int month=-1, int day=-1)
-		:People(name, index, sex, id, year, month, day) {
+	
+	Tutor() : Graduate() {
+
+	}
+	Tutor(string name="xx", string index="xx",  string sex="M", string id="130301", string classId="201001", int year=1981, int month=1, int day=1)
+		:Graduate (name, index, sex, id, classId, year, month, day) {
 		this -> classId = classId;
 	}
 	int

@@ -25,13 +25,11 @@ public:
 	//		while (!stuin.eof()) {
 		if (stuin.is_open()) {
 			cout << "init start\n";
-			char name[100];
-			char index[100];
-			string classId;
-			while (!stuin.eof() &&
-				stuin >> name >> index >> classId) {
-				cout << "|" << name << "|" << index << "|" << classId<< endl;
-				graduates[totalgraduate] = new Graduate(name, index, classId);
+			string name, index, sex;
+			while (!stuin.eof() && 
+				stuin >> name >> index >> sex ) {
+				cout << "|" << name << "|" << index << "|" << sex << endl;
+				graduates[totalgraduate] = new Graduate(name, index, sex);
 				totalgraduate++;
 			}
 			stuin.close();
@@ -88,11 +86,7 @@ public:
 	}
 	static int
 	add() {
-		char name[100];
-		char index[100];
-		string classId;
-		cin >> name >> index >> classId;
-		graduates[totalgraduate] = new Graduate(name, index, classId);
+		graduates[totalgraduate] = new Graduate();
 		totalgraduate++;
 		return 0;
 	}

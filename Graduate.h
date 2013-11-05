@@ -1,14 +1,16 @@
-#include "People.h"
+#include "Student.h"
 class
-Graduate : public People {
+Graduate : public Student {
 public:
 	static int total;
 	static ofstream *stuout;
-	static Graduate **graduates;
-	string classId;
-	Graduate(string name="xx", string index="xx", string classId="xx", string sex="x", string id="-1", int year=-1, int month=-1, int day=-1)
-		:People(name, index, sex, id, year, month, day) {
-		this -> classId = classId;
+	Teacher adviser;	
+	Graduate():Student(), adviser() {
+	}
+	Graduate(string name, string index, string sex = "M", string id="10086", string classId="201001", int year=1980, int month=1, int day=1)
+		: Student(name, index, sex, id, classId,  year,  month,  day)
+		, adviser(name, index, sex, id, classId,  year,  month,  day) {
+
 	}
 	int
 	showInfo() {
@@ -19,7 +21,6 @@ public:
 	int
 	writeGraduateInfo() {
 		this -> People::writePeopleInfo(stuout);
-		*stuout << classId << endl;
 	}
 };
 ofstream *Graduate::stuout = new ofstream("newGraduateInfo.txt");
