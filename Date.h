@@ -15,6 +15,11 @@ public:
 		cout << "year\tmonth\tday\n";
 		cin >> this->year >> this->month >> this->day;
 	}
+	Date(Date *date) {
+		this -> year = date -> year;
+		this -> month = date -> month;
+		this -> day = date -> day;
+	}
 	int
 	showDate() {
 		cout << this -> year << "/" << this -> month << "/" << this -> day << "\t";

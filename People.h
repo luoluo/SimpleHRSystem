@@ -17,6 +17,12 @@ public:
 		cout << "name\tindex\tsex\tid\n";
 		cin >>this-> name>>this->index>>this->sex>>this->id;
 	}
+	People(People *people):birthday(&people->birthday){
+		this->name = people->name;
+		this->index = people->index;
+		this->sex = people->sex;
+		this->id = people->id;
+	}
 	int
 	showInfo() {
 		//printf("%s\t%s\n", this -> name, this -> index);

@@ -10,6 +10,9 @@ public:
 		cout << "department\n";
 		cin >> this -> department;
 	}
+	Teacher(Teacher *teacher):People(teacher) {
+		this->department = teacher->department;	
+	}
 	Teacher(string name, string index, string sex="M", string id="23456", string department="T1", int year=1700, int month=1, int day=1)
 		:People(name, index, sex, id, year, month, day) {
 		this -> department = department;
@@ -28,6 +31,11 @@ public:
 	writeTeacherInfo() {
 		this -> People::writePeopleInfo(stuout);
 		*stuout << department << endl;
+	}
+	int
+	writeTeacherInfo(ofstream *pout) {
+		this -> People::writePeopleInfo(pout);
+		*pout << department << endl;
 	}
 };
 ofstream *Teacher::stuout = new ofstream("newTeacherInfo.txt");

@@ -26,10 +26,14 @@ public:
 		if (stuin.is_open()) {
 			cout << "init start\n";
 			string name, index, sex, id, classId;
+			string name1, index1, sex1, id1, department;
 			int year, month, day; 
+			int year1, month1, day1; 
 			while (!stuin.eof() &&
-				stuin >>name>> index>> sex>> id>> year>> month>> day>> classId) {
-				graduates[totalgraduate] = new Graduate(name, index, sex, id, classId, year, month, day);
+				stuin >>name>> index>> sex>> id>> year>> month >> day >> classId >>
+					name1 >> index1 >> sex1 >> id1 >> year1 >> month1>> day1 >> department) {
+				Teacher* teacher = new Teacher(name1, index1, sex1, id1, department, year1, month1, day1);
+				graduates[totalgraduate] = new Graduate(name, index, sex, id, classId, year, month, day, teacher);
 				totalgraduate++;
 			}
 			stuin.close();
