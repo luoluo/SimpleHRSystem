@@ -22,16 +22,14 @@ public:
 	init() {
 		ifstream stuin;
 		stuin.open("teacherInfo.txt"); 
-	//		while (!stuin.eof()) {
+//		while (!stuin.eof()) {
 		if (stuin.is_open()) {
 			cout << "init start\n";
-			char name[100];
-			char index[100];
-			string department;
+			string name, index, sex, id, department;
+			int year, month, day; 
 			while (!stuin.eof() &&
-				stuin >> name >> index >> department) {
-				cout << "|" << name << "|" << index << "|" << department<< endl;
-				teachers[totalteacher] = new Teacher(name, index, department);
+				stuin >>name>> index>> sex>> id>> year>> month>> day>> department) {
+				teachers[totalteacher] = new Teacher(name, index, sex, id, department, year, month, day);
 				totalteacher++;
 			}
 			stuin.close();
@@ -40,9 +38,9 @@ public:
 		return 0;
 	}
 	static bool
-	cmp(Teacher * t1, Teacher * t2) {
+	cmp(Teacher *t1, Teacher * t2) {
 	//	return strcmp(s1 -> classId, s2 -> classId ) > 0;
-		return t1->People::index.compare(t2->People::index) > 0;
+		return t1->People::index.compare(t2->People::index) < 0;
 	}
 	static int
 	stusort() {

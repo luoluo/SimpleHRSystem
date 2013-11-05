@@ -24,7 +24,10 @@ public:
 		this -> birthday.showDate();
 		return 0;
 	}
-	static ofstream *temp;
+	bool
+	cmp(People *p2) {
+		return this->index.compare(p2->index) < 0;
+	}
 	int
 	writePeopleInfo(ofstream *peoout = NULL) {
 		if (peoout) {

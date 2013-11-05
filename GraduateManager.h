@@ -22,14 +22,14 @@ public:
 	init() {
 		ifstream stuin;
 		stuin.open("graduateInfo.txt"); 
-	//		while (!stuin.eof()) {
+//		while (!stuin.eof()) {
 		if (stuin.is_open()) {
 			cout << "init start\n";
-			string name, index, sex;
-			while (!stuin.eof() && 
-				stuin >> name >> index >> sex ) {
-				cout << "|" << name << "|" << index << "|" << sex << endl;
-				graduates[totalgraduate] = new Graduate(name, index, sex);
+			string name, index, sex, id, classId;
+			int year, month, day; 
+			while (!stuin.eof() &&
+				stuin >>name>> index>> sex>> id>> year>> month>> day>> classId) {
+				graduates[totalgraduate] = new Graduate(name, index, sex, id, classId, year, month, day);
 				totalgraduate++;
 			}
 			stuin.close();
@@ -39,8 +39,8 @@ public:
 	}
 	static bool
 	cmp(Graduate * s1, Graduate * s2) {
-	//	return strcmp(s1 -> classId, s2 -> classId ) > 0;
-		return s1->classId.compare(s2->classId) > 0;
+//	return strcmp(s1 -> classId, s2 -> classId ) > 0;
+		return s1->cmp(s2);
 	}
 	static int
 	stusort() {
@@ -48,10 +48,10 @@ public:
 		return 0;
 	}
 	
-	static int searchByClass(string classIdx) {
+	static int searchByIndex(string index) {
 		int i;
 		for (i = 0; i < totalgraduate; i++) {
-			if (classIdx.compare(graduates[i]->classId) == 0) {
+			if (index.compare(graduates[i]->index) == 0) {
 				return i;
 			}
 		}
@@ -59,9 +59,9 @@ public:
 	}
 	static int
 	search() {
-		string classIdx;
-		cin >> classIdx;
-		int i = searchByClass(classIdx);
+		string index;
+		cin >> index;
+		int i = searchByIndex(index);
 		if (i == -1) {
 			cout << "not here\n";
 		} else {
@@ -71,16 +71,13 @@ public:
 	}
 	static int
 	edit() {
-		string classIdx;
-		cin >> classIdx;
-		int i = searchByClass(classIdx);
+		string index;
+		cin >> index;
+		int i = searchByIndex(index);
 		if (i == -1) {
 			cout << "not here\n";
 		} else {
-			string newclassId;
-			cin >> newclassId;
-			graduates[i] -> classId = newclassId;
-			cout << i << endl;
+			graduates[i] = new Graduate();
 		}
 		return 0;	
 	}
@@ -92,9 +89,9 @@ public:
 	}
 	static int
 	remove() {
-		string classIdx;
-		cin >> classIdx;
-		int i = searchByClass(classIdx);
+		string indexx;
+		cin >> indexx;
+		int i = searchByIndex(indexx);
 		if (i == -1) {
 			cout << "not here\n";
 		} else {

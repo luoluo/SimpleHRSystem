@@ -29,6 +29,17 @@ public:
 		this -> People::writePeopleInfo(stuout);
 		*stuout << classId << endl;
 	}
+	bool
+	cmp(Student *s2) {
+		return this->People::cmp(s2);
+	}
+	int
+	writeStudentInfo(ofstream * pout) {
+		if (pout != NULL) {
+			this -> People::writePeopleInfo(pout);
+			*pout << classId << endl;
+		}
+	}
 };
 ofstream *Student::stuout = new ofstream("newStudentInfo.txt");
 #endif

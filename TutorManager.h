@@ -24,11 +24,11 @@ public:
 		stuin.open("tutorInfo.txt"); 
 		if (stuin.is_open()) {
 			cout << "init start\n";
-			string name, index, sex;
+			string name, index, sex, id, classId;
+			int year, month, day; 
 			while (!stuin.eof() &&
-				stuin >> name >> index >> sex) {
-				cout << "|" << name << "|" << index << "|" << sex<< endl;
-				tutors[totaltutor] = new Tutor(name, index, sex);
+				stuin >>name>> index>> sex>> id>> year>> month>> day>> classId) {
+				tutors[totaltutor] = new Tutor(name, index, sex, id, classId, year, month, day);
 				totaltutor++;
 			}
 			stuin.close();
@@ -39,7 +39,7 @@ public:
 	static bool
 	cmp(Tutor * s1, Tutor * s2) {
 	//	return strcmp(s1 -> classId, s2 -> classId ) > 0;
-		return s1->classId.compare(s2->classId) > 0;
+		return s1->Graduate::cmp(s2);
 	}
 	static int
 	stusort() {
@@ -85,11 +85,7 @@ public:
 	}
 	static int
 	add() {
-		char name[100];
-		char index[100];
-		string classId;
-		cin >> name >> index >> classId;
-		tutors[totaltutor] = new Tutor(name, index, classId);
+		tutors[totaltutor] = new Tutor();
 		totaltutor++;
 		return 0;
 	}

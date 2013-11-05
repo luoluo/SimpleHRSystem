@@ -18,9 +18,13 @@ public:
 		cout << this -> classId << " ";	
 		cout << endl;
 	}
+	bool
+	cmp(Graduate *g2) {
+		return this->Student::cmp(g2);
+	}
 	int
 	writeGraduateInfo() {
-		this -> People::writePeopleInfo(stuout);
+		this -> Student::writeStudentInfo(stuout);
 	}
 };
 ofstream *Graduate::stuout = new ofstream("newGraduateInfo.txt");

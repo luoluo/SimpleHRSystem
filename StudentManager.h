@@ -41,7 +41,8 @@ public:
 	static bool
 	cmp(Student * s1, Student * s2) {
 	//	return strcmp(s1 -> classId, s2 -> classId ) > 0;
-		return s1->People::index.compare(s2->People::index) < 0;
+	//	return s1->People::index.compare(s2->People::index) < 0;
+		return s1->People::cmp(s2);
 	}
 	static int
 	stusort() {
@@ -66,7 +67,7 @@ public:
 		if (i == -1) {
 			cout << "not here\n";
 		} else {
-			cout << i << endl;
+			cout << i <<endl;
 		}
 		return 0;
 	}

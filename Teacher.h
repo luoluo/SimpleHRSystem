@@ -10,7 +10,7 @@ public:
 		cout << "department\n";
 		cin >> this -> department;
 	}
-	Teacher(string name, string index, string department="T1", string sex="M", string id="23456", int year=1700, int month=1, int day=1)
+	Teacher(string name, string index, string sex="M", string id="23456", string department="T1", int year=1700, int month=1, int day=1)
 		:People(name, index, sex, id, year, month, day) {
 		this -> department = department;
 	}
@@ -19,6 +19,10 @@ public:
 		this -> People::showInfo();
 		cout << this -> department << " ";	
 		cout << endl;
+	}
+	bool
+	cmp(Teacher *t2) {
+		return this->People::cmp(t2);
 	}
 	int
 	writeTeacherInfo() {
